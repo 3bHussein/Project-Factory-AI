@@ -42,10 +42,10 @@ def main():
     target = args.output_dir / f"issue-{number}-{slugify(issue['title'])}.md"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(build_spec(issue), encoding="utf-8")
-    slug = slugify(re.sub(r"^\\[Project Request\\]\\s*", "", issue["title"], flags=re.IGNORECASE))
+    slug = slugify(issue["title"].removeprefix("[Project Request]").strip())
     job = make_manifest(number, slug, target.as_posix())
     job_target = target.with_suffix(".job.json")
-    job_target.write_text(json.dumps(job, indent=2) + "\\n", encoding="utf-8")
+    job_target.write_text(json.dumps(job, indent=2), encoding="utf-8")
     print(target)
     print(job_target)
 if __name__ == "__main__":
