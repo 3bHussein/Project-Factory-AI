@@ -14,7 +14,7 @@ def validate_job(job, root):
     slug = job.get("project_slug")
     if type(number) is not int or number < 1:
         raise ValueError("Invalid issue number")
-    if not isinstance(slug, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
+    if not isinstance(spec, str) or not (spec.startswith(f"requests/issue-{number}-") and spec.endswith(".md") and re.fullmatch(r"[a-z0-9-]+", spec[len(f"requests/issue-{number}-"):-3])):
         raise ValueError("Invalid slug")
     if job.get("state") != "awaiting_agent" or job.get("provider") is not None:
         raise ValueError("Job is not awaiting an approved provider")
@@ -24,7 +24,7 @@ def validate_job(job, root):
     if job.get("output_directory") != expected:
         raise ValueError("Unexpected output directory")
     spec = job.get("specification_path")
-    if not isinstance(spec, str) or not re.fullmatch(r"requests/issue-[0-9]+-[a-z0-9-]+\\.md", spec):
+    if not isinstance(spec, str) or not (spec.startswith(f"requests/issue-{number}-") and spec.endswith(".md") and re.fullmatch(r"[a-z0-9-]+", spec[len(f"requests/issue-{number}-"):-3])):
         raise ValueError("Invalid specification path")
     if int(spec.split("/issue-", 1)[1].split("-", 1)[0]) != number:
         raise ValueError("Issue number mismatch")
