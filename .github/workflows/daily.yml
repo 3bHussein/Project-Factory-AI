@@ -1,0 +1,32 @@
+name: Daily proposal (review only)
+on:
+  schedule:
+    - cron: '15 7 * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  pull-requests: write
+concurrency:
+  group: factory-proposals
+  cancel-in-progress: false
+jobs:
+  propose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate backlog and tests
+        run: python -m unittest discover -s tests -v
+      - name: Generate proposal and audit manifest
+        run: python scripts/daily.py
+      - name: Open review-only PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: bot/daily-proposal
+          delete-branch: true
+          title: 'Daily idea proposal (human review required)'
+          body: 'Specifications only. No AI generated implementation, deployment, or auto-merge. Please review.'
+          commit-message: 'chore: daily idea proposal and run manifest'

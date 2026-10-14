@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "projects": [],
+  "policy": {
+    "auto_merge": false,
+    "paid_services": false,
+    "other_repositories_write": false
+  }
+}
