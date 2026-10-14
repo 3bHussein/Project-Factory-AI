@@ -41,7 +41,7 @@ def main():
     p.add_argument("job", type=pathlib.Path)
     p.add_argument("--root", type=pathlib.Path, default=pathlib.Path("."))
     args = p.parse_args()
-    job = json.loads(args.job.read_text(encoding="utf-8"))
+    job = json.loads(args.job.read_text(encoding="utf-8-sig"))
     print("Validated queued job:", validate_job(job, args.root))
 if __name__ == "__main__":
     main()
