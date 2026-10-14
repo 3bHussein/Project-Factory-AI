@@ -12,3 +12,11 @@
 ## Recording policy
 
 Each future change must record date (UTC), purpose, paths, testing outcome, commit/PR reference, compatibility risks and rollback plan. Never claim an unverified test passed.
+
+## 2026-10-14 — Port Inspector V1 CI validation
+
+- Added a read-only Windows/Linux Python port inspector, tests and launchers in PR #4.
+- Added `.github/workflows/quality.yml` for Windows and Ubuntu.
+- Verified GitHub Actions run 38529088902: both `tests (windows-latest)` and `tests (ubuntu-latest)` passed.
+- No production deployment or user-device acceptance test performed.
+- Rollback: revert PR #4 merge commit if needed.
