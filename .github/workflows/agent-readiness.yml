@@ -1,0 +1,22 @@
+name: Autonomous builder readiness
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'docs/MILESTONE-4-AUTONOMOUS-BUILDER.md'
+      - '.github/workflows/agent-readiness.yml'
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify documented safety and implementation gates
+        shell: python
+        run: |
+          from pathlib import Path
+          doc = Path("docs/MILESTONE-4-AUTONOMOUS-BUILDER.md").read_text()
+          for requirement in ("no auto-merge", "no shell interpolation", "not yet operational", "Definition of done", "no browser-stored GitHub token"):
+              assert requirement.lower() in doc.lower(), requirement
+          print("Autonomous coding remains disabled until an approved runner exists.")
