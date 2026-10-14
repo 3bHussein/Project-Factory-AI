@@ -1,0 +1,45 @@
+name: Generate reviewed starter project
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: 'New unique project slug (lowercase and hyphens)'
+        required: true
+        type: string
+      name:
+        description: 'Human-readable project name'
+        required: true
+        type: string
+permissions:
+  contents: write
+  pull-requests: write
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate factory
+        run: python -m unittest discover -s tests -v
+      - name: Generate project
+        env:
+          PROJECT_SLUG: ${{ inputs.slug }}
+          PROJECT_NAME: ${{ inputs.name }}
+        run: python scripts/generate_project.py --slug "$PROJECT_SLUG" --name "$PROJECT_NAME"
+      - name: Check docs
+        run: python scripts/validate_projects.py
+      - name: Test generated project
+        env:
+          PROJECT_SLUG: ${{ inputs.slug }}
+        run: python -m unittest discover -s "projects/$PROJECT_SLUG/tests" -v
+      - name: Create review PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: bot/starter-${{ inputs.slug }}
+          delete-branch: true
+          title: 'Starter project: ${{ inputs.name }} (review required)'
+          body: 'Generated from the single offline text-statistics template. This is not AI-generated custom functionality. Review code, docs and tests before merge.'
+          commit-message: 'feat: generated reviewed starter project'
