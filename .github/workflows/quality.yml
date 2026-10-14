@@ -25,5 +25,9 @@ jobs:
         run: python -m unittest discover -s projects/port-inspector/tests -v
       - name: Enforce project documentation and test structure
         run: python scripts/validate_projects.py
+      - name: Hash Verify unit tests
+        run: python -m unittest discover -s projects/hash-verify/tests -v
+      - name: Hash Verify CLI help
+        run: python projects/hash-verify/hash_verify.py --help
       - name: Port Inspector CLI help
         run: python projects/port-inspector/port_inspector.py --help
