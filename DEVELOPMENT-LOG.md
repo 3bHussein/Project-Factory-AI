@@ -12,3 +12,12 @@
 ## Recording policy
 
 Each future change must record date (UTC), purpose, paths, testing outcome, commit/PR reference, compatibility risks and rollback plan. Never claim an unverified test passed.
+
+## 2026-10-14 — GitHub Actions permission failure
+
+- Reported error: `GitHub Actions is not permitted to create or approve pull requests`.
+- Workflow YAML already declares `contents: write` and `pull-requests: write`.
+- Root cause is repository/organization Actions setting prohibiting PR creation, not missing YAML permissions.
+- Required manual action: Settings > Actions > General > Workflow permissions > enable `Allow GitHub Actions to create and approve pull requests`; ensure read/write permissions are permitted. Organization policy may override repository settings.
+- No bypass token or paid service added. Main protected by human review.
+- Status: Pending owner setting adjustment and rerun verification.
