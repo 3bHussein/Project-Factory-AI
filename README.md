@@ -13,14 +13,14 @@
 
 ## 👀 Dashboard
 
-Open [dashboard/index.html](dashboard/index.html) after downloading the repository. It is a responsive static project catalog and guide. It cannot execute local Python programs directly from the browser.
+Once GitHub Pages is enabled, visit **https://3bhussein.github.io/Project-Factory-AI/**. Until then, open [dashboard/index.html](dashboard/index.html) after downloading the repository. It is a responsive static project catalog and guide. It cannot execute local Python programs directly from the browser.
 
 ## Available projects
 
 | Project | Purpose | Run |
 | --- | --- | --- |
 | [Port Inspector](projects/port-inspector/) | Read-only listing of local listening ports on Windows/Linux | `python projects/port-inspector/port_inspector.py --json` |
-| Text Statistics starter | Counts words, characters, and lines in a UTF-8 file | Generate it using the command below |
+| [Hash Verify](projects/hash-verify/) | Offline SHA-256/SHA-512 checksums | `python projects/hash-verify/hash_verify.py myfile.zip --json` |\n| Text Statistics starter | Counts words, characters, and lines in a UTF-8 file | Generate it using the command below |
 
 Tools in open pull requests are not part of `main` until merged.
 
