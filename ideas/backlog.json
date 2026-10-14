@@ -1,0 +1,138 @@
+[
+  {
+    "slug": "smart-money",
+    "name": "Smart Money",
+    "problem": "Understand personal spending",
+    "platform": "web",
+    "language": "JavaScript",
+    "mvp": "Offline expense tracker"
+  },
+  {
+    "slug": "pc-health-doctor",
+    "name": "PC Health Doctor",
+    "problem": "Understand PC resource health",
+    "platform": "windows",
+    "language": "Python",
+    "mvp": "Read-only CPU, RAM and disk report"
+  },
+  {
+    "slug": "linux-health-check",
+    "name": "Linux Health Check",
+    "problem": "Inspect Linux server health",
+    "platform": "linux",
+    "language": "Bash",
+    "mvp": "Read-only service and disk diagnostics"
+  },
+  {
+    "slug": "autocare",
+    "name": "AutoCare",
+    "problem": "Track vehicle maintenance",
+    "platform": "web",
+    "language": "JavaScript",
+    "mvp": "Service history and reminders"
+  },
+  {
+    "slug": "network-doctor",
+    "name": "Network Doctor",
+    "problem": "Diagnose connectivity issues",
+    "platform": "cross-platform",
+    "language": "Python",
+    "mvp": "DNS, ping and interface checks"
+  },
+  {
+    "slug": "habitos",
+    "name": "HabitOS",
+    "problem": "Maintain useful habits",
+    "platform": "web",
+    "language": "JavaScript",
+    "mvp": "Daily habits and streaks"
+  },
+  {
+    "slug": "smart-cleanup",
+    "name": "Smart Cleanup",
+    "problem": "Preview reclaimable disk space safely",
+    "platform": "cross-platform",
+    "language": "Python",
+    "mvp": "Dry-run scan and user-approved removal"
+  },
+  {
+    "slug": "siteguardian",
+    "name": "SiteGuardian",
+    "problem": "Track website uptime",
+    "platform": "web",
+    "language": "Python",
+    "mvp": "HTTP status and latency checker"
+  },
+  {
+    "slug": "driver-backup",
+    "name": "Driver Backup Manager",
+    "problem": "Back up Windows drivers",
+    "platform": "windows",
+    "language": "PowerShell",
+    "mvp": "Export driver packages"
+  },
+  {
+    "slug": "invoiceflow",
+    "name": "InvoiceFlow",
+    "problem": "Create small-business invoices",
+    "platform": "web",
+    "language": "JavaScript",
+    "mvp": "Local invoice and PDF export"
+  },
+  {
+    "slug": "file-organizer",
+    "name": "File Organizer",
+    "problem": "Organize chaotic directories",
+    "platform": "cross-platform",
+    "language": "Python",
+    "mvp": "Dry-run sortable file organizer"
+  },
+  {
+    "slug": "learnflow",
+    "name": "LearnFlow",
+    "problem": "Practice spaced repetition",
+    "platform": "web",
+    "language": "JavaScript",
+    "mvp": "Local flashcards and review schedule"
+  },
+  {
+    "slug": "log-analyzer",
+    "name": "Log Analyzer",
+    "problem": "Find recurring incidents in logs",
+    "platform": "cross-platform",
+    "language": "Python",
+    "mvp": "Parse events and summarize errors"
+  },
+  {
+    "slug": "folder-sync",
+    "name": "Folder Sync Pro",
+    "problem": "Keep folders in sync without accidental loss",
+    "platform": "cross-platform",
+    "language": "Python",
+    "mvp": "Preview-first sync and file hashes"
+  },
+  {
+    "slug": "windows-repair",
+    "name": "Windows Repair Kit",
+    "problem": "Guide safe Windows diagnostics",
+    "platform": "windows",
+    "language": "BAT/PowerShell",
+    "mvp": "Read-only diagnostic menu"
+  },
+  {
+    "slug": "hash-verify",
+    "name": "Hash Verify",
+    "problem": "Verify downloaded files",
+    "platform": "cross-platform",
+    "language": "Python",
+    "mvp": "SHA-256 checksum verifier"
+  },
+  {
+    "slug": "port-inspector",
+    "name": "Port Inspector",
+    "problem": "Understand local listening ports",
+    "platform": "cross-platform",
+    "language": "Python",
+    "mvp": "List ports and processes"
+  }
+]
