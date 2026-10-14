@@ -14,7 +14,7 @@ def validate_job(job, root):
     slug = job.get("project_slug")
     if type(number) is not int or number < 1:
         raise ValueError("Invalid issue number")
-    if not isinstance(spec, str) or not (spec.startswith(f"requests/issue-{number}-") and spec.endswith(".md") and re.fullmatch(r"[a-z0-9-]+", spec[len(f"requests/issue-{number}-"):-3])):
+    if not isinstance(slug, str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", slug):
         raise ValueError("Invalid slug")
     if job.get("state") != "awaiting_agent" or job.get("provider") is not None:
         raise ValueError("Job is not awaiting an approved provider")
