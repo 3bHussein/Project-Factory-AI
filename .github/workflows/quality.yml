@@ -23,5 +23,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Port Inspector parser tests
         run: python -m unittest discover -s projects/port-inspector/tests -v
+      - name: Enforce project documentation and test structure
+        run: python scripts/validate_projects.py
       - name: Port Inspector CLI help
         run: python projects/port-inspector/port_inspector.py --help
