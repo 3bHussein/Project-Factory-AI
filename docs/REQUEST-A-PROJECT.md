@@ -6,7 +6,7 @@ Write a clear name, problem, platform, desired features, sample input/output, co
 
 ## What happens today
 
-1. A GitHub Issue records the idea for human review.
+1. A GitHub Issue records the idea for human review. A GitHub Actions workflow automatically opens a **specification-only pull request** for a correctly titled request after this automation is merged.
 2. A developer (or a coding agent explicitly given this task) implements a real project in a feature branch.
 3. CI runs tests, documentation checks and supported-platform checks.
 4. A PR is reviewed and merged before the dashboard lists it as available.
