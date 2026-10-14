@@ -97,6 +97,7 @@ def main():
     p.add_argument("--test-timeout", type=int, default=45)
     p.add_argument("--root", type=pathlib.Path, default=pathlib.Path("."))
     p.add_argument("--apply", action="store_true", help="Permit Ollama to modify project files")
+    p.add_argument("--improve", action="store_true", help="Ask Ollama to implement missing requirements even when tests pass")
     args = p.parse_args()
     if not 1 <= args.attempts <= 5 or not 5 <= args.test_timeout <= 180:
         p.error("Attempts must be 1-5 and test timeout 5-180 seconds")
@@ -114,12 +115,15 @@ def main():
     for attempt in range(1, args.attempts + 1):
         ok, output = test_project(root, args.slug, args.test_timeout)
         print("Test attempt", attempt, "PASS" if ok else "FAIL", flush=True)
-        if ok:
+        if ok and not (args.improve and attempt == 1):
             print("Tests pass. Functional/manual review still required.")
             return
         print(output[-2500:], flush=True)
         try:
-            changes = ask_ollama(read_project(root, args.slug), output, args.slug, args.model)
+            feedback = output if not ok else ("Existing tests pass but the application lacks functional requirements. "
+                "Implement live process refresh, CPU/RAM indicators, search, sorting and add meaningful tests. "
+                "Do not replace working functionality.\\n" + output)
+            changes = ask_ollama(read_project(root, args.slug), feedback, args.slug, args.model)
             print("Ollama proposed:", ", ".join(changes), flush=True)
             apply_changes(root, args.slug, changes)
         except Exception as exc:
