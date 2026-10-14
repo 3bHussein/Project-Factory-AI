@@ -1,0 +1,30 @@
+name: Validate queued agent jobs
+on:
+  pull_request:
+    paths:
+      - 'requests/**'
+      - 'scripts/validate_agent_job.py'
+      - 'tests/test_validate_agent_job.py'
+      - '.github/workflows/validate-agent-jobs.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit tests
+        run: python -m unittest discover -s tests -p test_validate_agent_job.py -v
+      - name: Validate queued job manifests
+        shell: python
+        run: |
+          import json
+          import pathlib
+          import subprocess
+          import sys
+          for path in sorted(pathlib.Path("requests").glob("*.job.json")):
+              subprocess.run([sys.executable, "scripts/validate_agent_job.py", str(path)], check=True)
