@@ -1,0 +1,50 @@
+name: Request a custom project
+description: Suggest a useful tool for Project Factory AI (human-reviewed, not automatically coded)
+title: "[Project Request] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe a real problem. This issue records a project request; the current factory does not autonomously implement arbitrary issues.
+  - type: input
+    id: project_name
+    attributes:
+      label: Project name
+      placeholder: "Log Analyzer Pro"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem to solve
+      description: Who needs it and why?
+    validations:
+      required: true
+  - type: textarea
+    id: features
+    attributes:
+      label: Must-have features and example input/output
+      placeholder: |
+        - Parse nginx logs
+        - Count 4xx/5xx
+        - Export a local HTML report
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Target platform
+      options: [Windows, Linux, Web, Cross-platform]
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Safety, privacy, offline and cost constraints
+      value: "Free-first; no paid APIs without approval; no destructive actions by default."
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance tests / definition of done
+      description: What should pass before release?

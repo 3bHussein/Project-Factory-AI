@@ -11,7 +11,7 @@
 
 > **Current limitation:** Daily automation generates **ideas/specifications**, not different finished programs every day. A general AI development agent has not been implemented.
 
-## 👀 Dashboard
+## 💡 Request a custom project\n\nUse the [custom project request form](https://github.com/3bHussein/Project-Factory-AI/issues/new/choose) to describe the problem, platform, features, example inputs/outputs and acceptance tests. Read the [request guide](docs/REQUEST-A-PROJECT.md). **Opening an issue does not yet automatically generate custom application code.** A developer or explicitly assigned coding agent must implement it and pass review.\n\n## 👀 Dashboard
 
 Once GitHub Pages is enabled, visit **https://3bhussein.github.io/Project-Factory-AI/**. Until then, open [dashboard/index.html](dashboard/index.html) after downloading the repository. It is a responsive static project catalog and guide. It cannot execute local Python programs directly from the browser.
 
