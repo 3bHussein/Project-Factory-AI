@@ -73,7 +73,7 @@ def main():
     if args.endpoint != "http://127.0.0.1:11434/api/generate":
         p.error("Only local Ollama endpoint is permitted")
     root = args.root.resolve()
-    job = json.loads(args.manifest.read_text(encoding="utf-8"))
+    job = json.loads(args.manifest.read_text(encoding="utf-8-sig"))
     files = generate(job, root, args.model, args.endpoint)
     print("Generated", len(files), "validated file paths")
     if not args.write:
