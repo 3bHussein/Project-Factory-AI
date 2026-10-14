@@ -1,7 +1,9 @@
 import importlib.util
+import sys
 import pathlib
 import unittest
 spec = importlib.util.spec_from_file_location("intake", pathlib.Path(__file__).resolve().parents[1]/"scripts"/"issue_to_spec.py")
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "scripts"))
 intake = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(intake)
 class IntakeTests(unittest.TestCase):
