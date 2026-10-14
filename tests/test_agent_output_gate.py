@@ -30,6 +30,6 @@ class AgentOutputGateTests(unittest.TestCase):
             for name in gate.REQUIRED:
                 (project / name).write_text("placeholder")
             (project / "test_task_m.py").write_text("def test_basic(): assert True")
-            self.assertEqual(gate.validate_project(pathlib.Path(root), "task-m"), project)
+            self.assertEqual(gate.validate_project(pathlib.Path(root), "task-m"), project.resolve())
 if __name__ == "__main__":
     unittest.main()
